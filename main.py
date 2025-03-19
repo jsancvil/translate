@@ -125,4 +125,5 @@ web = gr.Interface(
     description="Traductor de voz con IA a varios idiomas"
 )
 
-web.launch()
+port = int(os.getenv("PORT", 8080))  # Obtener el puerto asignado por Render
+web.launch(server_name="0.0.0.0", server_port=port)
