@@ -17,7 +17,13 @@ elevenlabs
 
 # Configuración .env
 config = dotenv_values(".env")
-ELEVENLABS_API_KEY = config["ELEVENLABS_API_KEY"]
+
+# Obtener la variable de entorno correctamente
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+
+if not ELEVENLABS_API_KEY:
+    raise ValueError("❌ ERROR: ELEVENLABS_API_KEY no está definida en Render. Agrega la variable en 'Environment Variables'.")
+
 
 
 def translator(audio_file):
